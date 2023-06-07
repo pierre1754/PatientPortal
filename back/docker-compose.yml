@@ -1,0 +1,12 @@
+services:
+  mongodb_container:
+    image: mongo:6.0.6
+    env_file:
+      - ./.env
+    ports:
+      - ${DATABASE_PORT}:${DATABASE_PORT}
+    volumes:
+      - mongodb_data_container:/data/db
+
+volumes:
+  mongodb_data_container:
