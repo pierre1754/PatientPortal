@@ -49,7 +49,31 @@ export class PatientsService {
   }
 
   async findAll(): Promise<PatientDto[]> {
-    return this.patientModel.find().select('-__v').exec();
+    return this.patientModel
+      .find()
+      .select('-__v')
+      .exec()
+      .catch((err) => {
+        console.log(err);
+        throw new InternalServerErrorException('Error while fetching patients');
+      });
+  }
+
+  async findById(id: string): Promise<PatientDto> {
+    const patient = await this.patientModel
+      .findById(id)
+      .exec()
+      .catch((err) => {
+        console.log(err);
+        throw new BadRequestException("Invalid patient's id");
+      });
+
+    if (!patient) {
+      throw new NotFoundException(`Patient with id ${id} not found`);
+    }
+
+    const { __v, ...rest } = patient.toObject();
+    return rest;
   }
 
   async delete(id: string) {

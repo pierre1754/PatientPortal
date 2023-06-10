@@ -1,5 +1,6 @@
 import { ApiProperty, ApiPropertyOptional } from '@nestjs/swagger';
 import { IsNumber, IsOptional, IsString } from 'class-validator';
+import { Doctor } from 'src/schemas/doctor.schema';
 
 export class PatientDto {
   @IsString()
@@ -70,4 +71,12 @@ export class PatientDto {
     example: 180,
   })
   height: number;
+
+  @IsString()
+  @IsOptional()
+  @ApiPropertyOptional({
+    description: 'The doctor of the patient',
+    example: '60b0f1e3b9b9b71f1c3f0b1e',
+  })
+  doctor: Doctor;
 }

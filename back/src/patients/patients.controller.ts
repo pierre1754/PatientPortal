@@ -58,6 +58,19 @@ export class PatientsController {
     return this.patientsService.findAll();
   }
 
+  @Get('/:id')
+  @ApiOperation({
+    summary: 'Get a patient by id',
+  })
+  @ApiResponse({
+    status: HttpStatus.OK,
+    description: 'The patient details',
+    type: PatientDto,
+  })
+  async findById(@Param('id') id: string) {
+    return this.patientsService.findById(id);
+  }
+
   @Delete('/delete/:id')
   @HttpCode(HttpStatus.NO_CONTENT)
   @ApiOperation({
@@ -65,7 +78,6 @@ export class PatientsController {
   })
   @ApiResponse({
     status: HttpStatus.NO_CONTENT,
-    description: 'The patient details',
   })
   async delete(@Param('id') id: string) {
     return this.patientsService.delete(id);
