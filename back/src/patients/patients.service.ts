@@ -7,7 +7,7 @@ import {
 import { InjectModel } from '@nestjs/mongoose';
 import { Model } from 'mongoose';
 import { Patient, PatientDocument } from 'src/patients/schema/patient.schema';
-import { PatientDto } from './dto/patients.dto';
+import { CreatePatientDto, PatientDto } from './dto/patients.dto';
 
 @Injectable()
 export class PatientsService {
@@ -15,7 +15,7 @@ export class PatientsService {
     @InjectModel(Patient.name) private patientModel: Model<PatientDocument>,
   ) {}
 
-  async create(createPatientDto: PatientDto): Promise<PatientDto> {
+  async create(createPatientDto: CreatePatientDto): Promise<PatientDto> {
     const createdPatient = await this.patientModel
       .create(createPatientDto)
       .catch((err) => {
@@ -31,7 +31,10 @@ export class PatientsService {
     return patient;
   }
 
-  async edit(id: string, editPatientDto: PatientDto): Promise<PatientDto> {
+  async edit(
+    id: string,
+    editPatientDto: CreatePatientDto,
+  ): Promise<PatientDto> {
     const editedPatient = await this.patientModel
       .findByIdAndUpdate(id, editPatientDto, { new: true })
       .exec()
@@ -74,6 +77,23 @@ export class PatientsService {
 
     const { __v, ...rest } = patient.toObject();
     return rest;
+  }
+
+  async findByDoctorId(doctorId: string): Promise<PatientDto[]> {
+    const patients = await this.patientModel
+      .find({ doctor: doctorId })
+      .select('-__v')
+      .exec()
+      .catch((err) => {
+        console.log(err);
+        throw new BadRequestException("Invalid doctor's id");
+      });
+
+    if (!patients) {
+      throw new NotFoundException(`Patient with doctor: ${doctorId} not found`);
+    }
+
+    return patients;
   }
 
   async delete(id: string) {

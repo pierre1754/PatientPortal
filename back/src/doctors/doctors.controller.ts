@@ -10,12 +10,20 @@ import {
 } from '@nestjs/common';
 import { DoctorsService } from './doctors.service';
 import { ApiOperation, ApiResponse, ApiTags } from '@nestjs/swagger';
-import { DoctorDto } from './dto/doctors.dto';
+import { CreateDoctorDto, DoctorDto } from './dto/doctors.dto';
+import { PatientsService } from 'src/patients/patients.service';
+import { PatientDto } from 'src/patients/dto/patients.dto';
+import { TreatmentsService } from 'src/treatments/treatments.service';
+import { TreatmentDto } from 'src/treatments/dto/treatments.dto';
 
 @Controller('doctors')
 @ApiTags('Doctor')
 export class DoctorsController {
-  constructor(private readonly doctorsService: DoctorsService) {}
+  constructor(
+    private readonly doctorsService: DoctorsService,
+    private readonly patientsService: PatientsService,
+    private readonly treatmentsService: TreatmentsService,
+  ) {}
 
   @Post('/create')
   @HttpCode(HttpStatus.CREATED)
@@ -27,7 +35,7 @@ export class DoctorsController {
     description: 'The doctor details',
     type: DoctorDto,
   })
-  async create(@Body() createDoctorDto: DoctorDto) {
+  async create(@Body() createDoctorDto: CreateDoctorDto) {
     return this.doctorsService.create(createDoctorDto);
   }
 
@@ -40,7 +48,7 @@ export class DoctorsController {
     description: 'The doctor details',
     type: DoctorDto,
   })
-  async edit(@Param('id') id: string, @Body() editDoctorDto: DoctorDto) {
+  async edit(@Param('id') id: string, @Body() editDoctorDto: CreateDoctorDto) {
     return this.doctorsService.edit(id, editDoctorDto);
   }
 
@@ -69,6 +77,34 @@ export class DoctorsController {
   })
   async findById(@Param('id') id: string) {
     return this.doctorsService.findById(id);
+  }
+
+  @Get('/:id/patients')
+  @ApiOperation({
+    summary: 'Get all patients of a doctor',
+  })
+  @ApiResponse({
+    status: HttpStatus.OK,
+    description: 'The patients details',
+    type: PatientDto,
+    isArray: true,
+  })
+  async findPatients(@Param('id') id: string) {
+    return this.patientsService.findByDoctorId(id);
+  }
+
+  @Get('/:id/treatments')
+  @ApiOperation({
+    summary: 'Get all treatments of a doctor',
+  })
+  @ApiResponse({
+    status: HttpStatus.OK,
+    description: 'The treatments details',
+    type: TreatmentDto,
+    isArray: true,
+  })
+  async findTreatments(@Param('id') id: string) {
+    return this.treatmentsService.findByDoctorId(id);
   }
 
   @Delete('/delete/:id')

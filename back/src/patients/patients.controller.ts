@@ -10,12 +10,17 @@ import {
 } from '@nestjs/common';
 import { PatientsService } from './patients.service';
 import { ApiOperation, ApiResponse, ApiTags } from '@nestjs/swagger';
-import { PatientDto } from './dto/patients.dto';
+import { CreatePatientDto, PatientDto } from './dto/patients.dto';
+import { TreatmentsService } from 'src/treatments/treatments.service';
+import { TreatmentDto } from 'src/treatments/dto/treatments.dto';
 
 @Controller('patients')
 @ApiTags('Patient')
 export class PatientsController {
-  constructor(private readonly patientsService: PatientsService) {}
+  constructor(
+    private readonly patientsService: PatientsService,
+    private readonly treatmentsService: TreatmentsService,
+  ) {}
 
   @Post('/create')
   @HttpCode(HttpStatus.CREATED)
@@ -27,7 +32,7 @@ export class PatientsController {
     description: 'The patient details',
     type: PatientDto,
   })
-  async create(@Body() createPatientDto: PatientDto) {
+  async create(@Body() createPatientDto: CreatePatientDto) {
     return this.patientsService.create(createPatientDto);
   }
 
@@ -40,7 +45,10 @@ export class PatientsController {
     description: 'The patient details',
     type: PatientDto,
   })
-  async edit(@Param('id') id: string, @Body() editPatientDto: PatientDto) {
+  async edit(
+    @Param('id') id: string,
+    @Body() editPatientDto: CreatePatientDto,
+  ) {
     return this.patientsService.edit(id, editPatientDto);
   }
 
@@ -69,6 +77,20 @@ export class PatientsController {
   })
   async findById(@Param('id') id: string) {
     return this.patientsService.findById(id);
+  }
+
+  @Get('/:id/treatments')
+  @ApiOperation({
+    summary: 'Get all treatments of a patient',
+  })
+  @ApiResponse({
+    status: HttpStatus.OK,
+    description: 'The treatments details',
+    type: TreatmentDto,
+    isArray: true,
+  })
+  async findTreatments(@Param('id') id: string) {
+    return this.treatmentsService.findByPatientId(id);
   }
 
   @Delete('/delete/:id')

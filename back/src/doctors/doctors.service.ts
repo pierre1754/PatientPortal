@@ -7,7 +7,7 @@ import {
 import { InjectModel } from '@nestjs/mongoose';
 import { Model } from 'mongoose';
 import { Doctor, DoctorDocument } from 'src/doctors/schema/doctor.schema';
-import { DoctorDto } from './dto/doctors.dto';
+import { CreateDoctorDto, DoctorDto } from './dto/doctors.dto';
 
 @Injectable()
 export class DoctorsService {
@@ -15,7 +15,7 @@ export class DoctorsService {
     @InjectModel(Doctor.name) private doctorModel: Model<DoctorDocument>,
   ) {}
 
-  async create(createDoctorDto: DoctorDto) {
+  async create(createDoctorDto: CreateDoctorDto) {
     const createdDoctor = await this.doctorModel
       .create(createDoctorDto)
       .catch((err) => {
@@ -31,7 +31,7 @@ export class DoctorsService {
     return doctor;
   }
 
-  async edit(id: string, editDoctorDto: DoctorDto): Promise<DoctorDto> {
+  async edit(id: string, editDoctorDto: CreateDoctorDto): Promise<DoctorDto> {
     const editedDoctor = await this.doctorModel
       .findByIdAndUpdate(id, editDoctorDto, { new: true })
       .exec()
