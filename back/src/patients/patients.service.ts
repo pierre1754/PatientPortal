@@ -1,4 +1,9 @@
-import { Injectable, InternalServerErrorException } from '@nestjs/common';
+import {
+  BadRequestException,
+  Injectable,
+  InternalServerErrorException,
+  NotFoundException,
+} from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
 import { Model } from 'mongoose';
 import { Patient, PatientDocument } from 'src/schemas/patient.schema';
@@ -11,35 +16,53 @@ export class PatientsService {
   ) {}
 
   async create(createPatientDto: PatientDto): Promise<PatientDto> {
-    try {
-      const createdPatient = await this.patientModel.create(createPatientDto);
-      const { __v, ...patient } = createdPatient.toObject();
+    const createdPatient = await this.patientModel
+      .create(createPatientDto)
+      .catch((err) => {
+        console.log(err);
+        throw new InternalServerErrorException('Error while creating patient');
+      });
 
-      return patient;
-    } catch (error) {
+    if (!createdPatient) {
       throw new InternalServerErrorException('Error while creating patient');
     }
+
+    const { __v, ...patient } = createdPatient.toObject();
+    return patient;
   }
 
   async edit(id: string, editPatientDto: PatientDto): Promise<PatientDto> {
-    try {
-      const editedPatient = this.patientModel.findByIdAndUpdate(
-        id,
-        editPatientDto,
-        { new: true },
-      );
+    const editedPatient = await this.patientModel
+      .findByIdAndUpdate(id, editPatientDto, { new: true })
+      .exec()
+      .catch((err) => {
+        console.log(err);
+        throw new BadRequestException("Invalid patient's id");
+      });
 
-      return editedPatient.select('-__v').exec();
-    } catch (error) {
-      throw new InternalServerErrorException('Error while editing patient');
+    if (!editedPatient) {
+      throw new NotFoundException(`Patient with id ${id} not found`);
     }
+
+    const { __v, ...patient } = editedPatient.toObject();
+    return patient;
   }
 
   async findAll(): Promise<PatientDto[]> {
-    try {
-      return this.patientModel.find().select('-__v').exec();
-    } catch (error) {
-      throw new InternalServerErrorException('Error while fetching patients');
+    return this.patientModel.find().select('-__v').exec();
+  }
+
+  async delete(id: string) {
+    const deletedPatient = await this.patientModel
+      .findByIdAndDelete(id)
+      .exec()
+      .catch((err) => {
+        console.log(err);
+        throw new BadRequestException("Invalid patient's id");
+      });
+
+    if (!deletedPatient) {
+      throw new NotFoundException(`Patient with id ${id} not found`);
     }
   }
 }
