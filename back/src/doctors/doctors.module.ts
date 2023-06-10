@@ -2,7 +2,7 @@ import { Module } from '@nestjs/common';
 import { DoctorsService } from './doctors.service';
 import { DoctorsController } from './doctors.controller';
 import { MongooseModule } from '@nestjs/mongoose';
-import { DoctorSchema } from 'src/schemas/doctor.schema';
+import { DoctorSchema } from 'src/doctors/schema/doctor.schema';
 
 @Module({
   imports: [

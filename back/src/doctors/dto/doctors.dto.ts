@@ -1,6 +1,6 @@
 import { ApiProperty, ApiPropertyOptional } from '@nestjs/swagger';
 import { IsArray, IsOptional, IsString } from 'class-validator';
-import { Patient } from 'src/schemas/patient.schema';
+import { Patient } from 'src/patients/schema/patient.schema';
 
 export class DoctorDto {
   @IsString()

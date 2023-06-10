@@ -6,7 +6,7 @@ import {
 } from '@nestjs/common';
 import { InjectModel } from '@nestjs/mongoose';
 import { Model } from 'mongoose';
-import { Patient, PatientDocument } from 'src/schemas/patient.schema';
+import { Patient, PatientDocument } from 'src/patients/schema/patient.schema';
 import { PatientDto } from './dto/patients.dto';
 
 @Injectable()
