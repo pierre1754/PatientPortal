@@ -10,7 +10,7 @@ import {
 } from '@nestjs/common';
 import { PatientsService } from './patients.service';
 import { ApiOperation, ApiResponse, ApiTags } from '@nestjs/swagger';
-import { PatientDto } from './patients.dto';
+import { PatientDto } from './dto/patients.dto';
 
 @Controller('patients')
 @ApiTags('Patient')
