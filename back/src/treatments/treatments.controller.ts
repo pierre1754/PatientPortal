@@ -7,6 +7,7 @@ import {
   HttpStatus,
   Param,
   Post,
+  Put,
 } from '@nestjs/common';
 import { ApiOperation, ApiResponse, ApiTags } from '@nestjs/swagger';
 import { TreatmentsService } from './treatments.service';
@@ -17,7 +18,7 @@ import { CreateTreatmentDto, TreatmentDto } from './dto/treatments.dto';
 export class TreatmentsController {
   constructor(private readonly treatmentsService: TreatmentsService) {}
 
-  @Post('/create')
+  @Post('/')
   @HttpCode(HttpStatus.CREATED)
   @ApiOperation({
     summary: 'Create a new treatment',
@@ -31,7 +32,7 @@ export class TreatmentsController {
     return this.treatmentsService.create(createTreatmentDto);
   }
 
-  @Post('/edit/:id')
+  @Put('/:id')
   @ApiOperation({
     summary: 'Edit a existing treatment',
   })

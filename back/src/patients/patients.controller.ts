@@ -7,6 +7,7 @@ import {
   HttpStatus,
   Param,
   Post,
+  Put,
 } from '@nestjs/common';
 import { PatientsService } from './patients.service';
 import { ApiOperation, ApiResponse, ApiTags } from '@nestjs/swagger';
@@ -22,7 +23,7 @@ export class PatientsController {
     private readonly treatmentsService: TreatmentsService,
   ) {}
 
-  @Post('/create')
+  @Post('/')
   @HttpCode(HttpStatus.CREATED)
   @ApiOperation({
     summary: 'Create a new patient',
@@ -36,7 +37,7 @@ export class PatientsController {
     return this.patientsService.create(createPatientDto);
   }
 
-  @Post('/edit/:id')
+  @Put('/:id')
   @ApiOperation({
     summary: 'Edit a existing patient',
   })
@@ -93,7 +94,7 @@ export class PatientsController {
     return this.treatmentsService.findByPatientId(id);
   }
 
-  @Delete('/delete/:id')
+  @Delete('/:id')
   @HttpCode(HttpStatus.NO_CONTENT)
   @ApiOperation({
     summary: 'Delete a patient',
