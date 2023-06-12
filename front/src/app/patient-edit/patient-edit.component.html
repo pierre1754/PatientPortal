@@ -1,0 +1,15 @@
+<form>
+  <app-patient-form
+    [patient]="patient"
+    onchange="console.log(data)"
+    [doctors]="doctors"
+  ></app-patient-form>
+  <button
+    type="button"
+    mat-raised-button
+    color="primary"
+    (click)="(savePatient)"
+  >
+    Save
+  </button>
+</form>

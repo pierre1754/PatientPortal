@@ -1,0 +1,70 @@
+<!-- {
+    "name": "John Doe",
+    "age": 20,
+    "gender": "Male",
+    "adress": "35000 Rennes France",
+    "phone": "0123456789",
+    "email": "test@test.com",
+    "bloodGroup": "A+",
+    "weight": 70,
+    "height": 180,
+    "doctor": "60b0f1e3b9b9b71f1c3f0b1e"
+  } -->
+<div class="grid grid-flow-row grid-cols-2 gap-4">
+  <mat-form-field>
+    <mat-label>Name</mat-label>
+    <input matInput />
+  </mat-form-field>
+  <mat-form-field>
+    <mat-label>Age</mat-label>
+    <input matInput />
+  </mat-form-field>
+  <mat-form-field>
+    <mat-label>Gender</mat-label>
+    <mat-select>
+      <mat-option value="Male">Male</mat-option>
+      <mat-option value="Female">Female</mat-option>
+    </mat-select>
+  </mat-form-field>
+  <mat-form-field>
+    <mat-label>Adress</mat-label>
+    <input matInput />
+  </mat-form-field>
+  <mat-form-field>
+    <mat-label>Phone</mat-label>
+    <input matInput />
+  </mat-form-field>
+  <mat-form-field>
+    <mat-label>Email</mat-label>
+    <input matInput />
+  </mat-form-field>
+  <mat-form-field>
+    <mat-label>Blood Group</mat-label>
+    <mat-select>
+      <mat-option value="A+">A+</mat-option>
+      <mat-option value="A-">A-</mat-option>
+      <mat-option value="B+">B+</mat-option>
+      <mat-option value="B-">B-</mat-option>
+      <mat-option value="AB+">AB+</mat-option>
+      <mat-option value="AB-">AB-</mat-option>
+      <mat-option value="O+">O+</mat-option>
+      <mat-option value="O-">O-</mat-option>
+    </mat-select>
+  </mat-form-field>
+  <mat-form-field>
+    <mat-label>Weight</mat-label>
+    <input matInput />
+  </mat-form-field>
+  <mat-form-field>
+    <mat-label>Height</mat-label>
+    <input matInput />
+  </mat-form-field>
+  <mat-form-field>
+    <mat-label>Doctor</mat-label>
+    <mat-select>
+      <mat-option *ngFor="let doctor of doctors" [value]="doctor._id">
+        {{ doctor.name }}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+</div>

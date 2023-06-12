@@ -7,6 +7,16 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClientModule } from '@angular/common/http';
 import { PatientsListComponent } from './patients-list/patients-list.component';
 import { PatientDetailComponent } from './patient-detail/patient-detail.component';
+import { MatTableModule } from '@angular/material/table';
+import { MatToolbarModule } from '@angular/material/toolbar';
+import { MatButtonModule } from '@angular/material/button';
+import { MatMenuModule } from '@angular/material/menu';
+import { MatIconModule } from '@angular/material/icon';
+import { PatientEditComponent } from './patient-edit/patient-edit.component';
+import { PatientFormComponent } from './patient-form/patient-form.component';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatInputModule } from '@angular/material/input';
+import { MatSelectModule } from '@angular/material/select';
 
 @NgModule({
   imports: [
@@ -14,8 +24,22 @@ import { PatientDetailComponent } from './patient-detail/patient-detail.componen
     AppRoutingModule,
     BrowserAnimationsModule,
     HttpClientModule,
+    MatTableModule,
+    MatToolbarModule,
+    MatButtonModule,
+    MatMenuModule,
+    MatIconModule,
+    MatFormFieldModule,
+    MatInputModule,
+    MatSelectModule,
   ],
-  declarations: [AppComponent, PatientsListComponent, PatientDetailComponent],
+  declarations: [
+    AppComponent,
+    PatientsListComponent,
+    PatientDetailComponent,
+    PatientEditComponent,
+    PatientFormComponent,
+  ],
   providers: [],
   bootstrap: [AppComponent],
 })

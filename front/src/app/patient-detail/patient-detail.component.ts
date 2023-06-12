@@ -1,8 +1,7 @@
 import { Component } from '@angular/core';
 import { Patient } from 'src/types/patient';
 import { PatientsService } from '../services/patients.service';
-import { ActivatedRoute } from '@angular/router';
-import { Location } from '@angular/common';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-patient-detail',
@@ -15,7 +14,7 @@ export class PatientDetailComponent {
   constructor(
     private route: ActivatedRoute,
     private patientsService: PatientsService,
-    private location: Location
+    private router: Router
   ) {}
 
   ngOnInit() {
@@ -29,7 +28,7 @@ export class PatientDetailComponent {
     });
   }
 
-  goBack() {
-    this.location.back();
+  async goBack() {
+    await this.router.navigate(['/patients']);
   }
 }
