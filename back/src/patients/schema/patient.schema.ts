@@ -16,7 +16,7 @@ export class Patient {
   gender: string;
 
   @Prop({ required: true })
-  address: string;
+  adress: string;
 
   @Prop()
   phone: string;

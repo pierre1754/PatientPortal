@@ -28,10 +28,10 @@ export class CreatePatientDto {
 
   @IsString()
   @ApiProperty({
-    description: 'The address of the patient',
+    description: 'The adress of the patient',
     example: '35000 Rennes France',
   })
-  address: string;
+  adress: string;
 
   @IsString()
   @IsOptional()
@@ -114,10 +114,10 @@ export class PatientDto {
 
   @IsString()
   @ApiProperty({
-    description: 'The address of the patient',
+    description: 'The adress of the patient',
     example: '35000 Rennes France',
   })
-  address: string;
+  adress: string;
 
   @IsString()
   @IsOptional()
