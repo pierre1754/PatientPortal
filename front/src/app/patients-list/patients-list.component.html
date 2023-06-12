@@ -1,0 +1,8 @@
+<div class="border border-red-500">
+  <h1>Patients List</h1>
+  <ul>
+    <li *ngFor="let patient of patients">
+      <a [routerLink]="['/patients', patient._id]">{{ patient.name }}</a>
+    </li>
+  </ul>
+</div>
