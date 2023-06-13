@@ -13,7 +13,10 @@ import { PatientsService } from './patients.service';
 import { ApiOperation, ApiResponse, ApiTags } from '@nestjs/swagger';
 import { CreatePatientDto, PatientDto } from './dto/patients.dto';
 import { TreatmentsService } from 'src/treatments/treatments.service';
-import { TreatmentDto } from 'src/treatments/dto/treatments.dto';
+import {
+  CreateTreatmentDto,
+  TreatmentDto,
+} from 'src/treatments/dto/treatments.dto';
 
 @Controller('patients')
 @ApiTags('Patient')
@@ -92,6 +95,22 @@ export class PatientsController {
   })
   async findTreatments(@Param('id') id: string) {
     return this.treatmentsService.findByPatientId(id);
+  }
+
+  @Post('/:id/treatments')
+  @ApiOperation({
+    summary: 'Create a new treatment for a patient',
+  })
+  @ApiResponse({
+    status: HttpStatus.CREATED,
+    description: 'The treatment details',
+    type: TreatmentDto,
+  })
+  async createTreatment(
+    @Param('id') id: string,
+    @Body() createTreatmentDto: CreateTreatmentDto,
+  ) {
+    return this.treatmentsService.createById(id, createTreatmentDto);
   }
 
   @Delete('/:id')

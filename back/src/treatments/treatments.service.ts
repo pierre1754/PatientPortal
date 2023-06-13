@@ -34,6 +34,27 @@ export class TreatmentsService {
     return treatment;
   }
 
+  async createById(
+    id: string,
+    createTreatmentDto: CreateTreatmentDto,
+  ): Promise<Treatment> {
+    const createdTreatment = await this.treatmentModel
+      .create({ ...createTreatmentDto, date: new Date(), patient: id })
+      .catch((err) => {
+        console.log(err);
+        throw new InternalServerErrorException(
+          'Error while creating treatment',
+        );
+      });
+
+    if (!createdTreatment) {
+      throw new InternalServerErrorException('Error while creating treatment');
+    }
+
+    const { __v, ...treatment } = createdTreatment.toObject();
+    return treatment;
+  }
+
   async edit(
     id: string,
     editTreatmentDto: CreateTreatmentDto,
