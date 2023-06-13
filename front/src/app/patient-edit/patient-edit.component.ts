@@ -1,4 +1,4 @@
-import { Component, SimpleChanges } from '@angular/core';
+import { Component } from '@angular/core';
 import { PatientsService } from '../services/patients.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Patient } from 'src/types/patient';
@@ -38,14 +38,8 @@ export class PatientEditComponent {
     this.getDoctors();
   }
 
-  ngOnChanges(changes: SimpleChanges) {
-    if (changes['patient']) {
-      console.log('Input value changed:', changes['patient'].currentValue);
-    }
-  }
-
   async goBack() {
-    await this.router.navigate(['/patients']);
+    await this.router.navigate(['/patient-list']);
   }
 
   getPatient() {

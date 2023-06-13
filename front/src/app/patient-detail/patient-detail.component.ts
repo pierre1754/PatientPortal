@@ -29,6 +29,6 @@ export class PatientDetailComponent {
   }
 
   async goBack() {
-    await this.router.navigate(['/patients']);
+    await this.router.navigate(['/patient-list']);
   }
 }

@@ -1,7 +1,7 @@
 import { Component, SimpleChanges } from '@angular/core';
 import { PatientsService } from '../services/patients.service';
 import { Router } from '@angular/router';
-import { Patient } from 'src/types/patient';
+import { CreatePatient } from 'src/types/patient';
 import { DoctorsService } from '../services/doctors.service';
 import { Doctor } from 'src/types/doctor';
 
@@ -11,8 +11,7 @@ import { Doctor } from 'src/types/doctor';
   styleUrls: ['./patient-add.component.css'],
 })
 export class PatientAddComponent {
-  patient: Patient = {
-    _id: '',
+  patient: CreatePatient = {
     name: '',
     age: 0,
     gender: '',
@@ -36,14 +35,8 @@ export class PatientAddComponent {
     this.getDoctors();
   }
 
-  ngOnChanges(changes: SimpleChanges) {
-    if (changes['patient']) {
-      console.log('Input value changed:', changes['patient'].currentValue);
-    }
-  }
-
   async goBack() {
-    await this.router.navigate(['/patients']);
+    await this.router.navigate(['/patient-list']);
   }
 
   getDoctors() {
@@ -53,6 +46,8 @@ export class PatientAddComponent {
   }
 
   async addPatient() {
+    console.log(this.patient);
+
     this.patientService.createPatient(this.patient).subscribe(() => {
       this.goBack();
     });

@@ -21,22 +21,22 @@ export class PatientsListComponent {
     this.getPatients();
   }
 
-  async addPatient() {
-    await this.router.navigate(['/patients/add']);
-  }
-
   getPatients() {
     this.patientsService.getPatients().subscribe((patients) => {
       this.patients = patients;
     });
   }
 
+  async createPatient() {
+    await this.router.navigate(['/new-patient']);
+  }
+
   async getPatientDetail(id: string) {
-    await this.router.navigate([`/patients/${id}`]);
+    await this.router.navigate([`/detail-patient/${id}`]);
   }
 
   async editPatient(id: string) {
-    await this.router.navigate([`/patients/edit/${id}`]);
+    await this.router.navigate([`/edit-patient/${id}`]);
   }
 
   deletePatient(id: string) {
