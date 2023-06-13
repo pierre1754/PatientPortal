@@ -28,7 +28,7 @@ export class PatientsListComponent {
   }
 
   async createPatient() {
-    await this.router.navigate(['/new-patient']);
+    await this.router.navigate(['/add-patient']);
   }
 
   async getPatientDetail(id: string) {
