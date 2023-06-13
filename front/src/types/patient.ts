@@ -4,6 +4,7 @@ export type CreatePatient = {
   gender: string;
   adress: string;
   phone: string;
+  email: string;
   bloodGroup: string;
   weight: number;
   height: number;

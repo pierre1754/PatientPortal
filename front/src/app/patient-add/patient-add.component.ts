@@ -1,16 +1,16 @@
 import { Component, SimpleChanges } from '@angular/core';
 import { PatientsService } from '../services/patients.service';
-import { ActivatedRoute, Router } from '@angular/router';
+import { Router } from '@angular/router';
 import { Patient } from 'src/types/patient';
 import { DoctorsService } from '../services/doctors.service';
 import { Doctor } from 'src/types/doctor';
 
 @Component({
-  selector: 'app-patient-edit',
-  templateUrl: './patient-edit.component.html',
-  styleUrls: ['./patient-edit.component.css'],
+  selector: 'app-patient-add',
+  templateUrl: './patient-add.component.html',
+  styleUrls: ['./patient-add.component.css'],
 })
-export class PatientEditComponent {
+export class PatientAddComponent {
   patient: Patient = {
     _id: '',
     name: '',
@@ -27,14 +27,12 @@ export class PatientEditComponent {
   doctors: Doctor[] = [];
 
   constructor(
-    private route: ActivatedRoute,
     private patientService: PatientsService,
     private doctorService: DoctorsService,
     private router: Router
   ) {}
 
   ngOnInit() {
-    this.getPatient();
     this.getDoctors();
   }
 
@@ -48,27 +46,14 @@ export class PatientEditComponent {
     await this.router.navigate(['/patients']);
   }
 
-  getPatient() {
-    const id = this.route.snapshot.paramMap.get('id');
-    this.patientService.getPatient(id ?? '').subscribe((patient) => {
-      this.patient = patient;
-    });
-  }
-
   getDoctors() {
     this.doctorService.getDoctors().subscribe((doctors) => {
       this.doctors = doctors;
     });
   }
 
-  async editPatient() {
-    this.patientService.editPatient(this.patient).subscribe(() => {
-      this.goBack();
-    });
-  }
-
-  async deletePatient() {
-    this.patientService.deletePatient(this.patient._id).subscribe(() => {
+  async addPatient() {
+    this.patientService.createPatient(this.patient).subscribe(() => {
       this.goBack();
     });
   }

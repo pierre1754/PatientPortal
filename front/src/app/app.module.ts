@@ -5,8 +5,11 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpClientModule } from '@angular/common/http';
+import { FormsModule } from '@angular/forms';
 import { PatientsListComponent } from './patients-list/patients-list.component';
 import { PatientDetailComponent } from './patient-detail/patient-detail.component';
+import { PatientAddComponent } from './patient-add/patient-add.component';
+
 import { MatTableModule } from '@angular/material/table';
 import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatButtonModule } from '@angular/material/button';
@@ -24,6 +27,7 @@ import { MatSelectModule } from '@angular/material/select';
     AppRoutingModule,
     BrowserAnimationsModule,
     HttpClientModule,
+    FormsModule,
     MatTableModule,
     MatToolbarModule,
     MatButtonModule,
@@ -39,6 +43,7 @@ import { MatSelectModule } from '@angular/material/select';
     PatientDetailComponent,
     PatientEditComponent,
     PatientFormComponent,
+    PatientAddComponent,
   ],
   providers: [],
   bootstrap: [AppComponent],

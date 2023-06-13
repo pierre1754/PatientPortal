@@ -1,4 +1,5 @@
 import { Component, Input } from '@angular/core';
+import { FormControl } from '@angular/forms';
 import { Doctor } from 'src/types/doctor';
 import { CreatePatient } from 'src/types/patient';
 
@@ -14,6 +15,7 @@ export class PatientFormComponent {
     gender: '',
     adress: '',
     phone: '',
+    email: '',
     bloodGroup: '',
     weight: 0,
     height: 0,

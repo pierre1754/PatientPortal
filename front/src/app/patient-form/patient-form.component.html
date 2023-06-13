@@ -1,23 +1,21 @@
-<!-- {
-    "name": "John Doe",
-    "age": 20,
-    "gender": "Male",
-    "adress": "35000 Rennes France",
-    "phone": "0123456789",
-    "email": "test@test.com",
-    "bloodGroup": "A+",
-    "weight": 70,
-    "height": 180,
-    "doctor": "60b0f1e3b9b9b71f1c3f0b1e"
-  } -->
 <div class="grid grid-flow-row grid-cols-2 gap-4">
   <mat-form-field>
     <mat-label>Name</mat-label>
-    <input matInput />
+    <input
+      matInput
+      type="text"
+      [defaultValue]="patient.name"
+      [(ngModel)]="patient.name"
+    />
   </mat-form-field>
   <mat-form-field>
     <mat-label>Age</mat-label>
-    <input matInput />
+    <input
+      matInput
+      type="number"
+      [defaultValue]="patient.age"
+      [(ngModel)]="patient.age"
+    />
   </mat-form-field>
   <mat-form-field>
     <mat-label>Gender</mat-label>
@@ -28,15 +26,30 @@
   </mat-form-field>
   <mat-form-field>
     <mat-label>Adress</mat-label>
-    <input matInput />
+    <input
+      matInput
+      type="text"
+      [defaultValue]="patient.adress"
+      [(ngModel)]="patient.adress"
+    />
   </mat-form-field>
   <mat-form-field>
     <mat-label>Phone</mat-label>
-    <input matInput />
+    <input
+      matInput
+      type="number"
+      [defaultValue]="patient.phone"
+      [(ngModel)]="patient.phone"
+    />
   </mat-form-field>
   <mat-form-field>
     <mat-label>Email</mat-label>
-    <input matInput />
+    <input
+      matInput
+      type="text"
+      [defaultValue]="patient.email"
+      [(ngModel)]="patient.email"
+    />
   </mat-form-field>
   <mat-form-field>
     <mat-label>Blood Group</mat-label>
@@ -53,11 +66,21 @@
   </mat-form-field>
   <mat-form-field>
     <mat-label>Weight</mat-label>
-    <input matInput />
+    <input
+      matInput
+      type="number"
+      [defaultValue]="patient.weight"
+      [(ngModel)]="patient.weight"
+    />
   </mat-form-field>
   <mat-form-field>
     <mat-label>Height</mat-label>
-    <input matInput />
+    <input
+      matInput
+      type="number"
+      [defaultValue]="patient.height"
+      [(ngModel)]="patient.height"
+    />
   </mat-form-field>
   <mat-form-field>
     <mat-label>Doctor</mat-label>

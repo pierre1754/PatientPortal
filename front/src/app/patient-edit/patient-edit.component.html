@@ -1,15 +1,44 @@
-<form>
-  <app-patient-form
-    [patient]="patient"
-    onchange="console.log(data)"
-    [doctors]="doctors"
-  ></app-patient-form>
-  <button
-    type="button"
-    mat-raised-button
-    color="primary"
-    (click)="(savePatient)"
-  >
-    Save
-  </button>
-</form>
+<div class="p-10 flex flex-col gap-y-10">
+  <div class="flex flex-col gap-y-10">
+    <h1>Edit Patient</h1>
+
+    <div class="px-10 flex flex-col">
+      <app-patient-form
+        [patient]="patient"
+        [doctors]="doctors"
+      ></app-patient-form>
+      <button
+        type="button"
+        mat-raised-button
+        color="primary"
+        (click)="editPatient()"
+      >
+        Save
+      </button>
+    </div>
+  </div>
+
+  <div class="flex flex-row justify-between">
+    <button
+      class="w-fit"
+      type="button"
+      mat-raised-button
+      color="primary"
+      (click)="goBack()"
+    >
+      <mat-icon>arrow_back</mat-icon>
+      Back
+    </button>
+
+    <button
+      class="w-fit"
+      type="button"
+      mat-raised-button
+      color="warn"
+      (click)="deletePatient()"
+    >
+      <mat-icon>delete</mat-icon>
+      Delete
+    </button>
+  </div>
+</div>

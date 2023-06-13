@@ -21,6 +21,10 @@ export class PatientsListComponent {
     this.getPatients();
   }
 
+  async addPatient() {
+    await this.router.navigate(['/patients/add']);
+  }
+
   getPatients() {
     this.patientsService.getPatients().subscribe((patients) => {
       this.patients = patients;
@@ -36,7 +40,8 @@ export class PatientsListComponent {
   }
 
   deletePatient(id: string) {
-    this.patientsService.deletePatient(id);
-    this.getPatients();
+    this.patientsService.deletePatient(id).subscribe(() => {
+      this.getPatients();
+    });
   }
 }
