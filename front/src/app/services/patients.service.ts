@@ -2,7 +2,7 @@ import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable, catchError, tap } from 'rxjs';
 import { CreatePatient, Patient } from 'src/types/patient';
-import { Treatment } from 'src/types/treatment';
+import { CreateTreatment, Treatment } from 'src/types/treatment';
 
 @Injectable({
   providedIn: 'root',
@@ -49,6 +49,23 @@ export class PatientsService {
         throw err;
       })
     );
+  }
+
+  createPatientTreatment(
+    id: string,
+    treatment: CreateTreatment
+  ): Observable<Treatment> {
+    return this.http
+      .post<Treatment>(
+        `${this.url}/${id}/treatments`,
+        treatment,
+        this.httpOptions
+      )
+      .pipe(
+        catchError((err) => {
+          throw err;
+        })
+      );
   }
 
   getPatientTreatment(id: string): Observable<Treatment[]> {

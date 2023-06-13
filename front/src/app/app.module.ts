@@ -20,6 +20,10 @@ import { PatientFormComponent } from './patient-form/patient-form.component';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { MatSelectModule } from '@angular/material/select';
+import { MatCardModule } from '@angular/material/card';
+import { MatListModule } from '@angular/material/list';
+import { TreatmentAddComponent } from './treatment-add/treatment-add.component';
+import { DoctorListComponent } from './doctor-list/doctor-list.component';
 
 @NgModule({
   imports: [
@@ -36,6 +40,8 @@ import { MatSelectModule } from '@angular/material/select';
     MatFormFieldModule,
     MatInputModule,
     MatSelectModule,
+    MatCardModule,
+    MatListModule,
   ],
   declarations: [
     AppComponent,
@@ -44,6 +50,8 @@ import { MatSelectModule } from '@angular/material/select';
     PatientEditComponent,
     PatientFormComponent,
     PatientAddComponent,
+    TreatmentAddComponent,
+    DoctorListComponent,
   ],
   providers: [],
   bootstrap: [AppComponent],

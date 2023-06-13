@@ -1,0 +1,47 @@
+<div class="p-10 flex flex-col gap-y-10">
+  <div class="flex flex-col gap-y-10">
+    <h1>Create Patient</h1>
+
+    <div class="px-10 flex flex-col gap-4 items-start">
+      <div class="flex flex-row gap-4">
+        <mat-form-field appearance="fill">
+          <mat-label>Treatment</mat-label>
+          <input
+            matInput
+            [(ngModel)]="treatment.treatment"
+            placeholder="Treatment"
+          />
+        </mat-form-field>
+        <mat-form-field>
+          <mat-label>Doctor</mat-label>
+          <mat-select [(ngModel)]="treatment.doctor">
+            <mat-option *ngFor="let doctor of doctors" [value]="doctor._id">
+              {{ doctor.name }}
+            </mat-option>
+          </mat-select>
+        </mat-form-field>
+      </div>
+      <button
+        type="button"
+        mat-raised-button
+        color="primary"
+        (click)="addTreatment()"
+      >
+        Save
+      </button>
+    </div>
+  </div>
+
+  <div class="flex flex-row justify-start">
+    <button
+      class="w-fit"
+      type="button"
+      mat-raised-button
+      color="primary"
+      (click)="goBack()"
+    >
+      <mat-icon>arrow_back</mat-icon>
+      Back
+    </button>
+  </div>
+</div>

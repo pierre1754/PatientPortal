@@ -8,7 +8,7 @@ import { CreateTreatment, Treatment } from 'src/types/treatment';
 })
 export class TreatmentsService {
   // todo env var
-  private url = 'http://localhost:3000/doctors';
+  private url = 'http://localhost:3000/treatments';
 
   httpOptions = {
     headers: new HttpHeaders({ 'Content-Type': 'application/json' }),
