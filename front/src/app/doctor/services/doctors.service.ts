@@ -9,7 +9,6 @@ import { Treatment } from 'src/types/treatment';
   providedIn: 'root',
 })
 export class DoctorsService {
-  // todo env var
   private url = 'http://localhost:3000/doctors';
 
   httpOptions = {

@@ -7,7 +7,6 @@ import { CreateTreatment, Treatment } from 'src/types/treatment';
   providedIn: 'root',
 })
 export class TreatmentsService {
-  // todo env var
   private url = 'http://localhost:3000/treatments';
 
   httpOptions = {
