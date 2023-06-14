@@ -2,7 +2,7 @@
 
 # Description
 
-This project is a simple implementation of a [REST API](https://en.wikipedia.org/wiki/Representational_state_transfer) using [NestJS](https://nestjs.com/) and [Mongoose](https://mongoosejs.com/).
+This project is an implementation of a [REST API](https://en.wikipedia.org/wiki/Representational_state_transfer) using [NestJS](https://nestjs.com/) and [Mongoose](https://mongoosejs.com/).
 
 # Installation
 

@@ -30,11 +30,14 @@ src
 │   │   ├── services
 ```
 
+I sorted the files by feature. Each feature has its own folder with its own components and services.
+
 ## Tailwind CSS
 
 I used Tailwind CSS to organize the layout of the page and add some style when needed.
 
 # User Documentation
 
-First, you need to create a doctor. Then, you can create a patient and assign him a doctor.
-Finally, you can create a treatment inside the patient details page.
+1. Go to the doctors page and create a doctor.
+2. Go to the patients page and create a patient.
+3. Go to the patient details page and create a treatment.
