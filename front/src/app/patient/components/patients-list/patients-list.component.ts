@@ -1,7 +1,7 @@
 import { Component } from '@angular/core';
 import { Patient } from 'src/types/patient';
-import { PatientsService } from '../services/patients.service';
-import { Router } from '@angular/router';
+import { PatientsService } from '../../services/patients.service';
+import { ActivatedRoute, Router } from '@angular/router';
 
 @Component({
   selector: 'app-patients-list',
@@ -14,7 +14,8 @@ export class PatientsListComponent {
 
   constructor(
     private patientsService: PatientsService,
-    private router: Router
+    private router: Router,
+    private route: ActivatedRoute
   ) {}
 
   ngOnInit() {
@@ -28,15 +29,15 @@ export class PatientsListComponent {
   }
 
   async createPatient() {
-    await this.router.navigate(['/add-patient']);
+    await this.router.navigate(['patients/add']);
   }
 
   async getPatientDetail(id: string) {
-    await this.router.navigate([`/detail-patient/${id}`]);
+    await this.router.navigate([`/patients/detail/${id}`]);
   }
 
   async editPatient(id: string) {
-    await this.router.navigate([`/edit-patient/${id}`]);
+    await this.router.navigate([`/patients/edit/${id}`]);
   }
 
   deletePatient(id: string) {

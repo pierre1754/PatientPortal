@@ -1,9 +1,8 @@
 import { Component } from '@angular/core';
-import { PatientsService } from '../services/patients.service';
+import { PatientsService } from '../../services/patients.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Patient } from 'src/types/patient';
-import { DoctorsService } from '../services/doctors.service';
-import { Doctor } from 'src/types/doctor';
+import { Location } from '@angular/common';
 
 @Component({
   selector: 'app-patient-edit',
@@ -24,34 +23,25 @@ export class PatientEditComponent {
     height: 0,
     doctor: '',
   };
-  doctors: Doctor[] = [];
 
   constructor(
     private route: ActivatedRoute,
     private patientService: PatientsService,
-    private doctorService: DoctorsService,
-    private router: Router
+    private location: Location
   ) {}
 
   ngOnInit() {
     this.getPatient();
-    this.getDoctors();
   }
 
-  async goBack() {
-    await this.router.navigate(['/patient-list']);
+  goBack() {
+    this.location.back();
   }
 
   getPatient() {
     const id = this.route.snapshot.paramMap.get('id');
     this.patientService.getPatient(id ?? '').subscribe((patient) => {
       this.patient = patient;
-    });
-  }
-
-  getDoctors() {
-    this.doctorService.getDoctors().subscribe((doctors) => {
-      this.doctors = doctors;
     });
   }
 

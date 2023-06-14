@@ -1,11 +1,12 @@
 import { Component } from '@angular/core';
 import { Patient } from 'src/types/patient';
-import { PatientsService } from '../services/patients.service';
+import { PatientsService } from '../../services/patients.service';
 import { ActivatedRoute, Router } from '@angular/router';
 import { Treatment } from 'src/types/treatment';
-import { DoctorsService } from '../services/doctors.service';
+import { DoctorsService } from '../../../doctor/services/doctors.service';
 import { Doctor } from 'src/types/doctor';
-import { TreatmentsService } from '../services/treatments.service';
+import { TreatmentsService } from '../../../treatment/services/treatments.service';
+import { Location } from '@angular/common';
 
 @Component({
   selector: 'app-patient-detail',
@@ -22,7 +23,8 @@ export class PatientDetailComponent {
     private patientsService: PatientsService,
     private doctorsService: DoctorsService,
     private treatmentService: TreatmentsService,
-    private router: Router
+    private router: Router,
+    private location: Location
   ) {}
 
   ngOnInit() {
@@ -57,9 +59,9 @@ export class PatientDetailComponent {
     return this.doctors.find((doctor) => doctor._id === id)?.name;
   }
 
-  addTreatment() {
+  async addTreatment() {
     const id = this.route.snapshot.paramMap.get('id');
-    this.router.navigate([`/add-treatment/${id}`]);
+    await this.router.navigate([`/treatments/add/${id}`]);
   }
 
   deleteTreatment(id: string) {
@@ -68,7 +70,7 @@ export class PatientDetailComponent {
     });
   }
 
-  async goBack() {
-    await this.router.navigate(['/patient-list']);
+  goBack() {
+    this.location.back();
   }
 }

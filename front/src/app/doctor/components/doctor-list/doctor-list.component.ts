@@ -1,6 +1,6 @@
 import { Component } from '@angular/core';
 import { Doctor } from 'src/types/doctor';
-import { DoctorsService } from '../services/doctors.service';
+import { DoctorsService } from '../../services/doctors.service';
 
 @Component({
   selector: 'app-doctor-list',

@@ -1,9 +1,10 @@
 import { Component } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
-import { DoctorsService } from '../services/doctors.service';
-import { TreatmentsService } from '../services/treatments.service';
+import { DoctorsService } from '../../../doctor/services/doctors.service';
+import { TreatmentsService } from '../../services/treatments.service';
 import { Doctor } from 'src/types/doctor';
 import { CreateTreatment } from 'src/types/treatment';
+import { Location } from '@angular/common';
 
 @Component({
   selector: 'app-treatment-add',
@@ -22,7 +23,7 @@ export class TreatmentAddComponent {
     private route: ActivatedRoute,
     private doctorService: DoctorsService,
     private treatmentService: TreatmentsService,
-    private router: Router
+    private location: Location
   ) {}
 
   ngOnInit() {
@@ -47,10 +48,7 @@ export class TreatmentAddComponent {
       });
   }
 
-  async goBack() {
-    await this.router.navigate([
-      '/detail-patient',
-      this.route.snapshot.paramMap.get('id') ?? '',
-    ]);
+  goBack() {
+    this.location.back();
   }
 }

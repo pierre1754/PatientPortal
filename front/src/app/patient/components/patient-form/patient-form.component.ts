@@ -21,6 +21,4 @@ export class PatientFormComponent {
     height: 0,
     doctor: '',
   };
-
-  @Input() doctors: Doctor[] = [];
 }

@@ -1,9 +1,8 @@
-import { Component, SimpleChanges } from '@angular/core';
-import { PatientsService } from '../services/patients.service';
+import { Component } from '@angular/core';
+import { PatientsService } from '../../services/patients.service';
 import { Router } from '@angular/router';
 import { CreatePatient } from 'src/types/patient';
-import { DoctorsService } from '../services/doctors.service';
-import { Doctor } from 'src/types/doctor';
+import { Location } from '@angular/common';
 
 @Component({
   selector: 'app-patient-add',
@@ -23,26 +22,14 @@ export class PatientAddComponent {
     height: 0,
     doctor: '',
   };
-  doctors: Doctor[] = [];
 
   constructor(
     private patientService: PatientsService,
-    private doctorService: DoctorsService,
-    private router: Router
+    private location: Location
   ) {}
 
-  ngOnInit() {
-    this.getDoctors();
-  }
-
-  async goBack() {
-    await this.router.navigate(['/patient-list']);
-  }
-
-  getDoctors() {
-    this.doctorService.getDoctors().subscribe((doctors) => {
-      this.doctors = doctors;
-    });
+  goBack() {
+    this.location.back();
   }
 
   async addPatient() {
