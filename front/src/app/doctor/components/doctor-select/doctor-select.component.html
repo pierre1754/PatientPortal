@@ -1,8 +1,0 @@
-<mat-form-field class="w-full">
-  <mat-label>Doctor</mat-label>
-  <mat-select [(ngModel)]="doctor">
-    <mat-option *ngFor="let doctor of doctors" [value]="doctor._id">
-      {{ doctor.name }}
-    </mat-option>
-  </mat-select>
-</mat-form-field>

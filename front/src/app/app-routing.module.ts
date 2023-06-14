@@ -8,6 +8,7 @@ import { PatientAddComponent } from './patient/components/patient-add/patient-ad
 import { TreatmentAddComponent } from './treatment/component/treatment-add/treatment-add.component';
 import { DoctorListComponent } from './doctor/components/doctor-list/doctor-list.component';
 import { DoctorAddComponent } from './doctor/components/doctor-add/doctor-add.component';
+import { DoctorDetailComponent } from './doctor/components/doctor-detail/doctor-detail.component';
 
 const routes: Routes = [
   { path: '', redirectTo: '/patients', pathMatch: 'full' },
@@ -17,6 +18,7 @@ const routes: Routes = [
   { path: 'patients/edit/:id', component: PatientEditComponent },
   { path: 'doctors', component: DoctorListComponent },
   { path: 'doctors/add', component: DoctorAddComponent },
+  { path: 'doctors/detail/:id', component: DoctorDetailComponent },
   { path: 'treatments/add/:id', component: TreatmentAddComponent },
 ];
 

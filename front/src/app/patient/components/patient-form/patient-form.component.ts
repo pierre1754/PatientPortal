@@ -1,5 +1,4 @@
 import { Component, Input } from '@angular/core';
-import { FormControl } from '@angular/forms';
 import { Doctor } from 'src/types/doctor';
 import { CreatePatient } from 'src/types/patient';
 
@@ -21,4 +20,6 @@ export class PatientFormComponent {
     height: 0,
     doctor: '',
   };
+
+  @Input() doctors: Doctor[] = [];
 }

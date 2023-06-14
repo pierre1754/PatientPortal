@@ -3,6 +3,8 @@ import { PatientsService } from '../../services/patients.service';
 import { Router } from '@angular/router';
 import { CreatePatient } from 'src/types/patient';
 import { Location } from '@angular/common';
+import { Doctor } from 'src/types/doctor';
+import { DoctorsService } from 'src/app/doctor/services/doctors.service';
 
 @Component({
   selector: 'app-patient-add',
@@ -23,10 +25,23 @@ export class PatientAddComponent {
     doctor: '',
   };
 
+  doctors: Doctor[] = [];
+
   constructor(
     private patientService: PatientsService,
+    private doctorsService: DoctorsService,
     private location: Location
   ) {}
+
+  ngOnInit() {
+    this.getDoctors();
+  }
+
+  getDoctors() {
+    this.doctorsService.getDoctors().subscribe((doctors) => {
+      this.doctors = doctors;
+    });
+  }
 
   goBack() {
     this.location.back();

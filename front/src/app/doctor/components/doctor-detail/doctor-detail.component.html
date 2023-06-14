@@ -1,0 +1,111 @@
+<div class="p-10 flex flex-col gap-y-10">
+  <h1>Patient Detail</h1>
+
+  <mat-card *ngIf="doctor">
+    <mat-card-header>
+      <mat-card-title>{{ doctor.name }}</mat-card-title>
+      <mat-card-subtitle>{{ doctor.profession }}</mat-card-subtitle>
+    </mat-card-header>
+
+    <mat-card-content> </mat-card-content>
+  </mat-card>
+
+  <mat-card>
+    <mat-card-header>Treatments</mat-card-header>
+
+    <mat-card-content>
+      <div class="flex flex-col gap-y-5">
+        <div *ngFor="let treatment of treatments">
+          <mat-card-content>
+            <div class="flex flex-row justify-between w-full">
+              <div class="flex flex-col gap-y-2">
+                <div class="flex flex-row gap-x-2">
+                  <mat-icon>medical_services</mat-icon>
+                  <span>{{ doctor.name }}</span>
+                </div>
+                <div class="flex flex-row gap-x-2">
+                  <mat-icon>date_range</mat-icon>
+                  <span>{{ treatment.date }}</span>
+                </div>
+              </div>
+
+              <div class="flex flex-col gap-y-2">
+                <div class="flex flex-row gap-x-2">
+                  <mat-icon>medical_services</mat-icon>
+                  <span>{{ treatment.treatment }}</span>
+                </div>
+
+                <button
+                  class="w-fit"
+                  type="button"
+                  mat-raised-button
+                  color="warn"
+                  (click)="deleteTreatment(treatment._id)"
+                >
+                  <mat-icon>delete</mat-icon>
+                  Delete
+                </button>
+              </div>
+            </div>
+          </mat-card-content>
+        </div>
+      </div>
+    </mat-card-content>
+  </mat-card>
+
+  <mat-card>
+    <mat-card-header>Patients</mat-card-header>
+
+    <mat-card-content>
+      <div class="flex flex-col gap-y-5">
+        <div *ngFor="let patient of patients">
+          <mat-card-content>
+            <div class="flex flex-row justify-between w-full">
+              <div class="flex flex-col gap-y-2">
+                <div class="flex flex-row gap-x-2">
+                  <mat-icon>medical_services</mat-icon>
+                  <span>{{ patient.name }}</span>
+                </div>
+                <div class="flex flex-row gap-x-2">
+                  <mat-icon>date_range</mat-icon>
+                  <span>{{ patient.adress }}</span>
+                </div>
+              </div>
+
+              <div class="flex flex-col gap-y-2">
+                <div class="flex flex-row gap-x-2">
+                  <mat-icon>phone</mat-icon>
+                  <span>{{ patient.phone }}</span>
+                </div>
+
+                <button
+                  class="w-fit"
+                  type="button"
+                  mat-raised-button
+                  color="warn"
+                  (click)="deletePatient(patient._id)"
+                >
+                  <mat-icon>delete</mat-icon>
+                  Delete
+                </button>
+              </div>
+            </div>
+          </mat-card-content>
+        </div>
+      </div>
+    </mat-card-content>
+  </mat-card>
+
+  <div class="flex flex-row justify-start">
+    <button
+      class="w-fit"
+      type="button"
+      mat-raised-button
+      color="primary"
+      (click)="goBack()"
+    >
+      <mat-icon>arrow_back</mat-icon>
+      Back
+    </button>
+  </div>
+</div>

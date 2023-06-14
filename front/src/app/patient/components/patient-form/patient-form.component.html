@@ -82,5 +82,15 @@
       [(ngModel)]="patient.height"
     />
   </mat-form-field>
-  <app-doctor-select [doctor]="patient.doctor"></app-doctor-select>
+  <mat-form-field class="w-full">
+    <mat-label>Doctor</mat-label>
+    <mat-select [(ngModel)]="patient.doctor">
+      <mat-option *ngFor="let doctorItem of doctors" [value]="doctorItem._id">
+        {{ doctorItem.name }}
+      </mat-option>
+    </mat-select>
+  </mat-form-field>
+  <div>
+    {{ patient.doctor }}
+  </div>
 </div>

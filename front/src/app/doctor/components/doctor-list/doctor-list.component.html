@@ -33,6 +33,9 @@
             <mat-icon fontIcon="settings">fa_edit</mat-icon>
           </button>
           <mat-menu #menu="matMenu">
+            <button mat-menu-item (click)="this.getDoctorDetail(element._id)">
+              Details
+            </button>
             <button mat-menu-item (click)="this.deleteDoctor(element._id)">
               Delete
             </button>

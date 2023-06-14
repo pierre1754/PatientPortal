@@ -10,7 +10,6 @@ import { PatientsListComponent } from './patient/components/patients-list/patien
 import { PatientDetailComponent } from './patient/components/patient-detail/patient-detail.component';
 import { PatientAddComponent } from './patient/components/patient-add/patient-add.component';
 import { TreatmentAddComponent } from './treatment/component/treatment-add/treatment-add.component';
-import { DoctorSelectComponent } from './doctor/components/doctor-select/doctor-select.component';
 
 import { MatTableModule } from '@angular/material/table';
 import { MatToolbarModule } from '@angular/material/toolbar';
@@ -26,6 +25,7 @@ import { MatCardModule } from '@angular/material/card';
 import { MatListModule } from '@angular/material/list';
 import { DoctorListComponent } from './doctor/components/doctor-list/doctor-list.component';
 import { DoctorAddComponent } from './doctor/components/doctor-add/doctor-add.component';
+import { DoctorDetailComponent } from './doctor/components/doctor-detail/doctor-detail.component';
 
 @NgModule({
   imports: [
@@ -54,8 +54,8 @@ import { DoctorAddComponent } from './doctor/components/doctor-add/doctor-add.co
     PatientAddComponent,
     TreatmentAddComponent,
     DoctorListComponent,
-    DoctorSelectComponent,
     DoctorAddComponent,
+    DoctorDetailComponent,
   ],
   providers: [],
   bootstrap: [AppComponent],

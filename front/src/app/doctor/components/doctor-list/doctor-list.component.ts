@@ -28,6 +28,10 @@ export class DoctorListComponent {
     await this.router.navigate(['/doctors/add']);
   }
 
+  getDoctorDetail(id: string) {
+    this.router.navigate([`/doctors/detail/${id}`]);
+  }
+
   deleteDoctor(id: string) {
     this.doctorsService.deleteDoctor(id).subscribe(() => {
       this.getDoctors();
