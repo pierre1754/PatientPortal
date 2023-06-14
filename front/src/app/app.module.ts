@@ -25,6 +25,7 @@ import { MatSelectModule } from '@angular/material/select';
 import { MatCardModule } from '@angular/material/card';
 import { MatListModule } from '@angular/material/list';
 import { DoctorListComponent } from './doctor/components/doctor-list/doctor-list.component';
+import { DoctorAddComponent } from './doctor/components/doctor-add/doctor-add.component';
 
 @NgModule({
   imports: [
@@ -54,6 +55,7 @@ import { DoctorListComponent } from './doctor/components/doctor-list/doctor-list
     TreatmentAddComponent,
     DoctorListComponent,
     DoctorSelectComponent,
+    DoctorAddComponent,
   ],
   providers: [],
   bootstrap: [AppComponent],
