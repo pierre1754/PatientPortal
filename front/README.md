@@ -33,3 +33,8 @@ src
 ## Tailwind CSS
 
 I used Tailwind CSS to organize the layout of the page and add some style when needed.
+
+# User Documentation
+
+First, you need to create a doctor. Then, you can create a patient and assign him a doctor.
+Finally, you can create a treatment inside the patient details page.
