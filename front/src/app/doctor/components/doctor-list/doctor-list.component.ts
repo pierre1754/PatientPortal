@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { Doctor } from 'src/types/doctor';
+import { Doctor } from 'src/app/types/doctor';
 import { DoctorsService } from '../../services/doctors.service';
 import { Router } from '@angular/router';
 

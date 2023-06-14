@@ -1,10 +1,10 @@
 import { Component } from '@angular/core';
-import { Patient } from 'src/types/patient';
+import { Patient } from 'src/app/types/patient';
 import { PatientsService } from '../../services/patients.service';
 import { ActivatedRoute, Router } from '@angular/router';
-import { Treatment } from 'src/types/treatment';
+import { Treatment } from 'src/app/types/treatment';
 import { DoctorsService } from '../../../doctor/services/doctors.service';
-import { Doctor } from 'src/types/doctor';
+import { Doctor } from 'src/app/types/doctor';
 import { TreatmentsService } from '../../../treatment/services/treatments.service';
 import { Location } from '@angular/common';
 

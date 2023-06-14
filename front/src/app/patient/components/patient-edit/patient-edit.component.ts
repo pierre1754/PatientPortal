@@ -1,9 +1,9 @@
 import { Component } from '@angular/core';
 import { PatientsService } from '../../services/patients.service';
 import { ActivatedRoute, Router } from '@angular/router';
-import { Patient } from 'src/types/patient';
+import { Patient } from 'src/app/types/patient';
 import { Location } from '@angular/common';
-import { Doctor } from 'src/types/doctor';
+import { Doctor } from 'src/app/types/doctor';
 import { DoctorsService } from 'src/app/doctor/services/doctors.service';
 
 @Component({

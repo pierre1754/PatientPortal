@@ -1,7 +1,7 @@
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable, catchError } from 'rxjs';
-import { CreateTreatment, Treatment } from 'src/types/treatment';
+import { CreateTreatment, Treatment } from 'src/app/types/treatment';
 
 @Injectable({
   providedIn: 'root',

@@ -1,12 +1,12 @@
 import { Component } from '@angular/core';
-import { Doctor } from 'src/types/doctor';
+import { Doctor } from 'src/app/types/doctor';
 import { DoctorsService } from '../../services/doctors.service';
 import { ActivatedRoute } from '@angular/router';
 import { Location } from '@angular/common';
 import { TreatmentsService } from 'src/app/treatment/services/treatments.service';
 import { PatientsService } from 'src/app/patient/services/patients.service';
-import { Patient } from 'src/types/patient';
-import { Treatment } from 'src/types/treatment';
+import { Patient } from 'src/app/types/patient';
+import { Treatment } from 'src/app/types/treatment';
 
 @Component({
   selector: 'app-doctor-detail',

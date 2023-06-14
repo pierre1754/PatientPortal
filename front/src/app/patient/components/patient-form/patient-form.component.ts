@@ -1,6 +1,6 @@
 import { Component, Input } from '@angular/core';
-import { Doctor } from 'src/types/doctor';
-import { CreatePatient } from 'src/types/patient';
+import { Doctor } from 'src/app/types/doctor';
+import { CreatePatient } from 'src/app/types/patient';
 
 @Component({
   selector: 'app-patient-form',

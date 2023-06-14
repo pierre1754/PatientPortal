@@ -1,8 +1,8 @@
 import { Injectable } from '@angular/core';
 import { HttpClient, HttpHeaders } from '@angular/common/http';
 import { Observable, catchError, tap } from 'rxjs';
-import { CreatePatient, Patient } from 'src/types/patient';
-import { CreateTreatment, Treatment } from 'src/types/treatment';
+import { CreatePatient, Patient } from 'src/app/types/patient';
+import { CreateTreatment, Treatment } from 'src/app/types/treatment';
 
 @Injectable({
   providedIn: 'root',

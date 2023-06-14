@@ -2,8 +2,8 @@ import { Component } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { DoctorsService } from '../../../doctor/services/doctors.service';
 import { TreatmentsService } from '../../services/treatments.service';
-import { Doctor } from 'src/types/doctor';
-import { CreateTreatment } from 'src/types/treatment';
+import { Doctor } from 'src/app/types/doctor';
+import { CreateTreatment } from 'src/app/types/treatment';
 import { Location } from '@angular/common';
 
 @Component({

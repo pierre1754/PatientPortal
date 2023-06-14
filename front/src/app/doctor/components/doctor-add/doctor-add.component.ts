@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { CreateDoctor } from 'src/types/doctor';
+import { CreateDoctor } from 'src/app/types/doctor';
 import { DoctorsService } from '../../services/doctors.service';
 import { Location } from '@angular/common';
 
